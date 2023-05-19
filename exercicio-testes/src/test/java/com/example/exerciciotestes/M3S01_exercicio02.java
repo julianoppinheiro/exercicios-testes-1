@@ -1,13 +1,11 @@
 package com.example.exerciciotestes;
 
 import com.example.exerciciotestes.controller.request.ClienteRequest;
-import com.example.exerciciotestes.model.Cliente;
 import com.example.exerciciotestes.repository.ClienteRepository;
 import com.example.exerciciotestes.service.ClienteService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.mockito.Mockito.mock;

@@ -1,7 +1,6 @@
 package com.example.exerciciotestes;
 
 import com.example.exerciciotestes.model.Cliente;
-import com.example.exerciciotestes.repository.ClienteRepository;
 import com.example.exerciciotestes.service.ClienteService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -10,7 +9,6 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
-import java.util.Optional;
 
 @SpringBootTest
 class M3S01_exercicio01 {

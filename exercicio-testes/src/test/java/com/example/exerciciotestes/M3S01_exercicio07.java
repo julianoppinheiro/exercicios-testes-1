@@ -12,25 +12,27 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class M3S01_exercicio06 {
+class M3S01_exercicio07 {
 
-    //Crie os testes unitários para os métodos salvarProduto já existentes na classe ProdutoService
     @Test
-    @DisplayName("Deve salvar um produto")
-    public void salvarProduto() {
-        // Cria um objeto ProdutoService e o objeto Producorequest mockado
+    @DisplayName("Deve atualizar um Produto no banco de dados")
+
+// Crie os testes unitários para os métodos atualizarProduto já existente na classe ProdutoService
+    public void atualizarProduto() {
+        // Cria um objeto Produtoservice e o objeto ProdutoResquest mockado
         ProdutoService produtoService = new ProdutoService(mock(ProdutoRepository.class));
         ProdutoRequest produtoRequest = mock(ProdutoRequest.class);
 
-        //atribui valores ao objeto mock
-        when(produtoRequest.getNomeProduto()).thenReturn("aa");
+        //atribui valores ao objeto mock para atualizar o Produto
+        when(produtoRequest.getNomeProduto()).thenReturn("atualizado");
         when(produtoRequest.getValorProduto()).thenReturn(10.0);
 
-        //salvar produto
-        produtoService.salvarProduto(produtoRequest);
+        //salvar cliente
+        produtoService.atualizarProduto(1L, produtoRequest);
 
         // Verifique se o comportamento esperado ocorreu usando o Mockito
-        Assertions.assertEquals("aa", produtoRequest.getNomeProduto());
+        Assertions.assertEquals("atualizado", produtoRequest.getNomeProduto());
+        Assertions.assertEquals(10.0, produtoRequest.getValorProduto());
 
     }
 }

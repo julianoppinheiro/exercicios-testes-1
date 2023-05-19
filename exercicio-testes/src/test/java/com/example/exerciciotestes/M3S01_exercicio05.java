@@ -4,7 +4,6 @@ import com.example.exerciciotestes.controller.request.ProdutoRequest;
 import com.example.exerciciotestes.model.Produto;
 import com.example.exerciciotestes.repository.ProdutoRepository;
 import com.example.exerciciotestes.service.ProdutoService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
