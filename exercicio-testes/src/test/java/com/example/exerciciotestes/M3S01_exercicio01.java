@@ -40,10 +40,14 @@ class M3S01_exercicio01 {
         //prepara o ambiente para o teste
         ClienteService service = Mockito.mock(ClienteService.class);
 
+        //cria um cliente
+        Cliente cliente = new Cliente(1L, "Cliente 1", 10.0);
+
         //buscar cliente por id
-        Mockito.when(service.buscaClientePorId(1L));
+        Mockito.when(service.buscaClientePorId(1L)).thenReturn(cliente);
 
         ////verifica o resultado do cliente
-        Assertions.assertThat(service.buscaClientePorId(1L)).isNotNull();
+        Assertions.assertThat(cliente.getId()).isEqualTo(1L);
+
     }
 }
