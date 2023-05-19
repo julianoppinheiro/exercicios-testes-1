@@ -9,6 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ClienteRequest {
 
+  private Long id;
   private String nomeCliente;
   private Double saldoCliente;
 

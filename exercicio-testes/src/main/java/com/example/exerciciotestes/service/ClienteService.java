@@ -47,4 +47,8 @@ public class ClienteService {
         }
         this.ClienteRepository.deleteById(id);
     }
+
+    public void deletarClientePorId(long l) {
+        ClienteRepository.deleteById(l);
+    }
 }
