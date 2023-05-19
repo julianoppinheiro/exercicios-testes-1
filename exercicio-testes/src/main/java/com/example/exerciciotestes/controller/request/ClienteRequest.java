@@ -13,8 +13,4 @@ public class ClienteRequest {
   private String nomeCliente;
   private Double saldoCliente;
 
-    public ClienteRequest() {
-      this.nomeCliente = nomeCliente;
-        this.saldoCliente = saldoCliente;
-    }
 }

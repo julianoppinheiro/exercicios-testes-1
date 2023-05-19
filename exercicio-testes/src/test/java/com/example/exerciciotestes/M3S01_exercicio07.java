@@ -33,6 +33,5 @@ class M3S01_exercicio07 {
         // Verifique se o comportamento esperado ocorreu usando o Mockito
         Assertions.assertEquals("atualizado", produtoRequest.getNomeProduto());
         Assertions.assertEquals(10.0, produtoRequest.getValorProduto());
-
     }
 }
