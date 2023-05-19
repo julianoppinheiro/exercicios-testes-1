@@ -6,6 +6,7 @@ import com.example.exerciciotestes.repository.ProdutoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProdutoService {
@@ -36,6 +37,9 @@ public class ProdutoService {
     }
     public Produto buscaProdutoPorId (Long id){
         return this.ProdutoRepository.findById(id).orElse(null);
+    }
+    public Optional<Produto> buscaId (Long id){
+        return this.ProdutoRepository.findById(id);
     }
 
     public void detelaProdutoPorId(Long id){
