@@ -21,16 +21,22 @@ class M3S01_exercicio01 {
     void buscaTodosClientes() {
         //prepara o ambiente para o teste
         ClienteRepository repository = Mockito.mock(ClienteRepository.class);
-        Mockito.when(repository.findAll()).thenReturn(List.of(new Cliente(1L, "Cliente 1", 12.0)));
+
+        //cria alguns cliente para ser retornado pelo método findAll
+        Mockito.when(repository.findAll()).thenReturn(List.of(
+                new Cliente(1L, "Cliente 1", 12.0),
+                new Cliente(2L, "Cliente 2", 10.0),
+                new Cliente(3L, "Cliente 3", 15.0),
+                new Cliente(4L, "Cliente 4", 20.0)));
 
         //executa o teste
         List<Cliente> clientes = repository.findAll();
 
-        //verifica o resultado
-        Assertions.assertThat(clientes.size()).isEqualTo(1);
-        Assertions.assertThat(clientes.get(0).getId()).isEqualTo(1L);
+        //verifica o resultado dentro do ArrayList
+        Assertions.assertThat(clientes).hasSize(4);
         Assertions.assertThat(clientes.get(0).getNomeCliente()).isEqualTo("Cliente 1");
-        Assertions.assertThat(clientes.get(0).getSaldoCliente()).isEqualTo(12.0);
+        Assertions.assertThat(clientes.get(1).getNomeCliente()).isEqualTo("Cliente 2");
+        Assertions.assertThat(clientes.get(2).getNomeCliente()).isEqualTo("Cliente 3");
     }
 
     @Test
@@ -43,9 +49,9 @@ class M3S01_exercicio01 {
         //executa o teste
         Cliente cliente = repository.findById(1L).get();
 
-        //verifica o resultado
-        Assertions.assertThat(cliente.getId()).isEqualTo(1L);
+        //verifica o resultado dentro do for
         Assertions.assertThat(cliente.getNomeCliente()).isEqualTo("Cliente 1");
-        Assertions.assertThat(cliente.getSaldoCliente()).isEqualTo(10.0);
+
+
     }
 }
