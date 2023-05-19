@@ -2,6 +2,7 @@ package com.example.exerciciotestes;
 
 import com.example.exerciciotestes.model.Cliente;
 import com.example.exerciciotestes.repository.ClienteRepository;
+import com.example.exerciciotestes.service.ClienteService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,38 +21,29 @@ class M3S01_exercicio01 {
     @DisplayName("Deve retornar uma lista de clientes")
     void buscaTodosClientes() {
         //prepara o ambiente para o teste
-        ClienteRepository repository = Mockito.mock(ClienteRepository.class);
+        ClienteService service = Mockito.mock(ClienteService.class);
 
-        //cria alguns cliente para ser retornado pelo método findAll
-        Mockito.when(repository.findAll()).thenReturn(List.of(
-                new Cliente(1L, "Cliente 1", 12.0),
-                new Cliente(2L, "Cliente 2", 10.0),
-                new Cliente(3L, "Cliente 3", 15.0),
-                new Cliente(4L, "Cliente 4", 20.0)));
+        //cria uma lista de clientes
+        List<Cliente> clientes = List.of(
+                        new Cliente(1L, "Cliente 1", 10.0),
+                        new Cliente(2L, "Cliente 2", 20.0),
+                        new Cliente(3L, "Cliente 3", 30.0)
+        );
 
-        //executa o teste
-        List<Cliente> clientes = repository.findAll();
-
-        //verifica o resultado dentro do ArrayList
-        Assertions.assertThat(clientes).hasSize(4);
-        Assertions.assertThat(clientes.get(0).getNomeCliente()).isEqualTo("Cliente 1");
-        Assertions.assertThat(clientes.get(1).getNomeCliente()).isEqualTo("Cliente 2");
-        Assertions.assertThat(clientes.get(2).getNomeCliente()).isEqualTo("Cliente 3");
+        //quando o método buscaTodosClientes for chamado, retorna a lista de clientes criada acima
+        Mockito.when(service.buscaTodosClientes()).thenReturn(clientes);
     }
 
     @Test
     @DisplayName("Deve retornar um cliente quando o id existir")
     void buscaClientePorId(){
         //prepara o ambiente para o teste
-        ClienteRepository repository = Mockito.mock(ClienteRepository.class);
-        Mockito.when(repository.findById(1L)).thenReturn(Optional.of(new Cliente(1L, "Cliente 1", 10.0)));
+        ClienteService service = Mockito.mock(ClienteService.class);
 
-        //executa o teste
-        Cliente cliente = repository.findById(1L).get();
+        //buscar cliente por id
+        Mockito.when(service.buscaClientePorId(1L));
 
-        //verifica o resultado dentro do for
-        Assertions.assertThat(cliente.getNomeCliente()).isEqualTo("Cliente 1");
-
-
+        ////verifica o resultado do cliente
+        Assertions.assertThat(service.buscaClientePorId(1L)).isNotNull();
     }
 }

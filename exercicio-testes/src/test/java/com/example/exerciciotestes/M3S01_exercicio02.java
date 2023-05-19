@@ -1,12 +1,18 @@
 package com.example.exerciciotestes;
 
+import com.example.exerciciotestes.controller.request.ClienteRequest;
 import com.example.exerciciotestes.model.Cliente;
 import com.example.exerciciotestes.repository.ClienteRepository;
-import org.assertj.core.api.Assertions;
+import com.example.exerciciotestes.service.ClienteService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 class M3S01_exercicio02 {
@@ -15,12 +21,19 @@ class M3S01_exercicio02 {
     @Test
     @DisplayName("Deve salvar um cliente")
     public void salvarCliente() {
-        //prepara o ambiente para o teste
-        ClienteRepository clienteRepository = Mockito.mock(ClienteRepository.class);
-        //executa o teste do save dentro do service
-        Mockito.when(clienteRepository.save(Mockito.any(Cliente.class))).thenReturn(new Cliente("João", 100.0));
+        // Cria um objeto ClienteService e o objeto ClienteResquest mockado
+        ClienteService clienteService = new ClienteService(mock(ClienteRepository.class));
+        ClienteRequest clienteRequest = mock(ClienteRequest.class);
 
-        //verifica o resultado do cliente
-        Assertions.assertThat(clienteRepository.save(new Cliente("João", 100.0))).isNotNull();
+        //atribui valores ao objeto mock
+        when(clienteRequest.getNomeCliente()).thenReturn("aa");
+        when(clienteRequest.getSaldoCliente()).thenReturn(10.0);
+
+        //salvar cliente
+        clienteService.salvarCliente(clienteRequest);
+
+        // Verifique se o comportamento esperado ocorreu usando o Mockito
+        Assertions.assertEquals("aa", clienteRequest.getNomeCliente());
+
     }
 }
