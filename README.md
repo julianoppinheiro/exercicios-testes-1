@@ -1,2 +1,2 @@
-# exercicios-testes
-Projeto para ser utilizado nos exercícios da semana de aulas de testes 
+# exercicios-testes-1
+exercicio do modulo 3, semana 1
